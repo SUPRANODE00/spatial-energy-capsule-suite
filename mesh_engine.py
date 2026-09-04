@@ -78,7 +78,10 @@ class SpatialMeshEngine:
 
 
 async def main():
+    # Initialize primary spatial node
     node = SpatialMeshEngine(node_id="AXIS-NODE-01", origin_x=0.0, origin_y=0.0, origin_z=0.0)
+    
+    # Ingest incoming telemetry signals from active inventory units
     print("[+] Initializing AXIS Telemetry Ingestion Pipeline...")
     
     packet_a = node.ingest_telemetry("UAV-ALPHA", x=12.5, y=45.0, z=120.8, signal_dbm=-68.2)
@@ -90,6 +93,7 @@ async def main():
     print(f"[✓] Node UAV-ALPHA distance from origin: {dist_a:.3f} m | Neg Volume: {packet_a.neg_volume_block:.3f}")
     print(f"[✓] Node UAV-BRAVO distance from origin: {dist_b:.3f} m | Neg Volume: {packet_b.neg_volume_block:.3f}")
     
+    # Export state manifest
     print("\n[+] Exporting State Manifest:")
     print(node.export_inventory_state())
 
