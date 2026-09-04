@@ -39,7 +39,7 @@ jobs:
 
     - name: Type Checking (Mypy)
       run: |
-        mypy --ignore-missing-imports mesh_engine.py
+        mypy --ignore-missing-imports .
 
     - name: Execute Automated Test Suite (Pytest)
       run: |
